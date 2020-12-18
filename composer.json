@@ -1,0 +1,21 @@
+{
+    "name": "sangroya/yii2-listview",
+    "description": "Enhanced the ListView widget of yii2 framework to add header and maintain order of layout tags",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," list view"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Parveen Sangroya",
+            "email": "parveen0013@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "parveen\\": ""
+        }
+    }
+}
