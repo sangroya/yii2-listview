@@ -20,19 +20,19 @@ class ListView extends YiiListView
     public $parentOptions=[];
    
     public function renderHeader($attributes){
+
         $header="";
         $options=$this->itemOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'div');
         $headerItemTag="span";
-       
+     
         if($tag=="tr")
         $headerItemTag="th";
 
-       
         foreach($attributes as $value)
         $header.=Html::tag($headerItemTag,$value,[]);
       
-        return Html::tag($tag,$header,[]);
+        return Html::tag($tag,$header,["class"=>"item"]);
     }
     public function renderItems()
     {
@@ -43,9 +43,10 @@ class ListView extends YiiListView
             if(! isset($this->header["attributes"])){
                 throw new InvalidConfigException('The "attributes" property must be either an array or an object of header');
             }
-            $row[]=$this->renderHeader($this->header['attributes']);
-          
+            $rows[]=$this->renderHeader($this->header['attributes']);
+           
         }
+        
         foreach (array_values($models) as $index => $model) {
             $key = $keys[$index];
             if (($before = $this->renderBeforeItem($model, $key, $index)) !== null) {
@@ -53,7 +54,7 @@ class ListView extends YiiListView
             }
 
             $rows[] = $this->renderItem($model, $key, $index);
-
+           
             if (($after = $this->renderAfterItem($model, $key, $index)) !== null) {
                 $rows[] = $after;
             }
